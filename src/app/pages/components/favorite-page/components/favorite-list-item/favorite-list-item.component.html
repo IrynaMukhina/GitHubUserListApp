@@ -1,0 +1,31 @@
+<mat-list-item class="app-favorite-list-item">
+  <mat-icon class="app-favorite-list-item__icon mat-icon material-icons mat-icon-no-color"
+    role="img"
+    aria-hidden="true"
+    (click)="updateUserFavoriteState(userItem)"
+    [ngStyle]="{'color':'#3f51b5'}">
+    {{ userItem.isFavorite ? 'favorite' : 'favorite_border' }}
+  </mat-icon>
+  <div class="app-favorite-list-item__section app-favorite-list-item__section__login">
+    <a [href]="getUserAcountLink(userItem.url)" target="_blank" rel="noopener">{{ userItem.login }}</a>
+  </div>
+  <div class="app-favorite-list-item__section app-favorite-list-item__section__url">{{ userItem.url }}</div>
+  <div class="app-favorite-list-item__section app-favorite-list-item__section__comment example-full-width">
+    <mat-form-field>
+      <mat-label>Leave a comment</mat-label>
+      <textarea [formControl]="commentControl" matInput placeholder="Ex. It makes me feel..."></textarea>
+      <mat-error *ngIf="commentControl.hasError('minlength')">Mininum character number is 10</mat-error>
+      <mat-error *ngIf="commentControl.hasError('maxlength')r">
+        Maximum character number is 100
+      </mat-error>
+    </mat-form-field>
+    <button mat-raised-button
+      cdkFocusInitial
+      color="primary"
+      [disabled]="commentControl.hasError('minlength') || commentControl.hasError('maxlength')"
+      (click)="onAddComment()">
+      Add Comment
+    </button>
+  </div>
+
+</mat-list-item>

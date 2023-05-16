@@ -1,0 +1,106 @@
+$fontColorLight: #828282;
+$fontColorDark: #000000;
+$fontColorMedium: white;
+$primaryColor: #3f51b5;;
+$navigationLineBgColor: #F6F6F6;
+$activeNavigationFontColor: #ffffff;
+$navigationActiveBackground: $primaryColor;
+$navigationHoverBackground: rgba($navigationActiveBackground, 0.6);
+
+::ng-deep .mat-list-base .mat-list-item.navigation-item .mat-list-item-content {
+  padding: 0;
+}
+
+::ng-deep .mat-list-item-content .mat-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  padding: 0 4px;
+}
+
+::ng-deep .mat-list-base .mat-list-item.navigation-item {
+  margin-bottom: 20px;
+  padding: 0;
+  height: 30px;
+
+  &__icon,
+  &__description {
+    &:hover {
+      color: $activeNavigationFontColor;
+    }
+  }
+
+  &:hover {
+    background-color: $navigationHoverBackground;
+  }
+}
+
+.logo {
+  height: 40px;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.logo__container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  height: 60px;
+}
+
+.navigation-line {
+  &__container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    background-color: $navigationLineBgColor;
+    width: inherit;
+    background: url("../../../../assets/background/nav-bg-03.png");
+  }
+}
+
+.navigation-item {
+  &__wrapper {
+    display: flex;
+    justify-content: flex-start;
+  }
+
+  &__icon {
+    color: $fontColorMedium;
+    font-size: 1.2rem;
+  }
+
+  &__description {
+    margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    color: $fontColorMedium;
+    font-size: 0.9rem;
+    line-height: 1.2rem;
+    font-weight: 200;
+    text-transform: uppercase;
+  }
+
+  &_active {
+    background-color: $navigationActiveBackground;
+
+    .navigation-item {
+      &__icon {
+        color: $activeNavigationFontColor;
+      }
+    
+      &__description {
+        color: $activeNavigationFontColor;
+      }
+    }
+
+  }
+}
+
+.toggle {
+  &_opened {
+    overflow: hidden;
+  }
+}

@@ -1,0 +1,8 @@
+<div class="app-repositories-page">
+  <h1 class="app-repositories-page__title">Repositories page</h1>
+  <app-repositories-list
+    [items]="repositories"
+    [length]="repositoriesTotal$ | async"
+    (onPaginationChange)="onPaginationChange($event)">
+  </app-repositories-list>
+</div>

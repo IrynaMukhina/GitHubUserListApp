@@ -1,0 +1,21 @@
+.app-page-not-found {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 200px;
+  color: grey;
+  text-shadow: darken(grey, 10) 1px 1px 0;
+
+  &__title {
+    font-size: 160px;
+    line-height: 1;
+  }
+
+  &__description {
+    font-size: 46px;
+    text-transform: uppercase;
+    font-weight: bold;
+    line-height: 1;
+  }
+}
