@@ -1,0 +1,22 @@
+$buttonBgColor1: #f08e31;
+$buttonBgColor2: #f3952b;
+$buttonFontColor: #ffffff;
+
+.navigation {
+  &__button {
+    width: 250px;
+    height: 40px;
+    border-radius: 8px;
+    background-image: linear-gradient(to bottom, $buttonBgColor1 4%, $buttonBgColor2 100%);
+    color: $buttonFontColor;
+    font-size: 16px;
+    text-align: center;
+    font-weight: 200;
+    text-transform: uppercase;
+
+    @media screen and (max-width: 992px) {
+      width: 180px;
+      font-size: 14px;
+    }
+  }
+}

@@ -1,0 +1,51 @@
+:host {
+  .app-favorite-list-item {
+    margin-bottom: 20px;
+    height: 100%;
+    padding: 20px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+
+    &:hover {
+      box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    }
+
+
+    &__icon {
+      width: 5%;
+    }
+
+    &__section {
+      display: flex;
+      align-items: flex-start;
+      gap: 20px;
+
+      &__login {
+        width: 15%;
+      }
+
+      &__url {
+        width: 25%;
+      }
+
+      &__comment {
+        align-items: center;
+        width: 50%;
+      }
+    }
+
+    ::ng-deep {
+      .mat-mdc-list-item-unscoped-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 20px;
+        flex-wrap: wrap;
+        width: 100%;
+      }
+
+      .mat-mdc-form-field {
+        width: 70%;
+      }
+    }
+  }  
+}

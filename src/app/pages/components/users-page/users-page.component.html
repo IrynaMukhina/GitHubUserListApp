@@ -1,0 +1,7 @@
+<div class="app-users-page">
+  <h1 class="app-users-page__title">Users Page</h1>
+   <app-users-grid [users]="users"
+    [length]="total$ | async"
+    (onPaginationChange)="onPaginationChange($event)">
+  </app-users-grid>
+</div>
