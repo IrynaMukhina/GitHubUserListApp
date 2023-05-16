@@ -20,6 +20,7 @@ export const USERS_GRID_COLUMN_DEFS = (handleLoginClick, handleIsFavoriteChange)
     cellRenderer: function(params: any) {
       return '<a>'+ params.value+'</a>'
     },
+    cellClass: ['cursor-pointer', 'cell-link'],
     onCellClicked: ({ data }) => handleLoginClick(data),
   },
   {
@@ -28,7 +29,7 @@ export const USERS_GRID_COLUMN_DEFS = (handleLoginClick, handleIsFavoriteChange)
   },
   {
     field: 'url',
-    width: 350,
+    width: 400,
     resizable: true
   },
   {
@@ -43,6 +44,7 @@ export const USERS_GRID_COLUMN_DEFS = (handleLoginClick, handleIsFavoriteChange)
     field: 'isFavorite',
     id: 'isFavorite',
     resizable: true,
+    width: 350,
     cellRenderer: ({ data }: any) => {
       const isFavorite = data?.isFavorite;
 

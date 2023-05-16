@@ -2,14 +2,13 @@
   <mat-icon class="app-favorite-list-item__icon mat-icon material-icons mat-icon-no-color"
     role="img"
     aria-hidden="true"
-    (click)="updateUserFavoriteState(userItem)"
-    [ngStyle]="{'color':'#3f51b5'}">
+    (click)="updateUserFavoriteState(userItem)">
     {{ userItem.isFavorite ? 'favorite' : 'favorite_border' }}
   </mat-icon>
   <div class="app-favorite-list-item__section app-favorite-list-item__section__login">
-    <a [href]="getUserAcountLink(userItem.url)" target="_blank" rel="noopener">{{ userItem.login }}</a>
+    <a (click)="onLinkClick()">{{ userItem.login }}</a>
   </div>
-  <div class="app-favorite-list-item__section app-favorite-list-item__section__url">{{ userItem.url }}</div>
+  <div class="app-favorite-list-item__section app-favorite-list-item__section__url">{{ getUserAcountLink(userItem.url) }}</div>
   <div class="app-favorite-list-item__section app-favorite-list-item__section__comment example-full-width">
     <mat-form-field>
       <mat-label>Leave a comment</mat-label>

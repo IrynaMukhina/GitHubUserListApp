@@ -1,4 +1,14 @@
-<div class="app-favorite-page">
+<div class="app-favorite-page" *ngIf="(items$ | async) as items">
   <h1 class="app-favorite-page__title">Favorite page</h1>
-  <app-favorite-list [items]="items$ | async"></app-favorite-list>
+  <app-favorite-list *ngIf="items.length; else noFavorite"
+    [items]="items">
+  </app-favorite-list>
+  <ng-template #noFavorite>
+    <div class="app-favorite-page__info">
+      <mat-icon class="app-favorite-page__info__icon">
+        info_outline
+      </mat-icon>
+      You haven't added favorite users yet. Please add it on Users page.
+    </div>
+  </ng-template>
 </div>

@@ -14,5 +14,16 @@
         color: #3f51b5;
       }
     }
+
+    .cell-link {
+      font-style: normal;
+      font-weight: 400;
+      text-decoration: underline;
+      color:  #2473b2;
+    }
+    
+    .cursor-pointer {
+      cursor: pointer;
+    }  
   }
 }

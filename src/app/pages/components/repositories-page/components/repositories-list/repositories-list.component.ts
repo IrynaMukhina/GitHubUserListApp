@@ -38,6 +38,8 @@ export class RepositoriesList implements OnChanges {
   }
 
   public handlePageEvent(e: PageEvent): void {
+    console.log('handlePageEvent', e, this.length);
+    
     this.pageEvent = e;
     this.length = e.length;
     this.pageSize = e.pageSize;
