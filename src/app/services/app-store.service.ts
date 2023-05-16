@@ -19,6 +19,8 @@ export class AppStoreService {
 
   public repositoriesUserList$: Observable<Array<any>>  = this._store.select(getRepositoriesUserList);
 
+  public repositoriesUserListLoading$: Observable<boolean> = this._store.select(usersGridDataPending);
+
   public repositoriesTotal$: Observable<number> = this._store.select(getRepositoriesTotal);
 
   public fetchUsersGridData(page: number, per_page: number): void {

@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { AppStoreService } from 'src/app/services/app-store.service';
 import { RepositoriesService } from './services/repositories-page.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-repositories-page',
@@ -13,7 +14,10 @@ export class RepositoriesPageComponent implements OnInit, OnDestroy {
   public repositoriesTotal$ = this._storeService.repositoriesTotal$;
 
   public repositories;
-  private _repositoriesSubscription;
+  public total: number;
+
+  private _repositoriesSubscription: Subscription;
+  private _repositoriesTotalSubscription: Subscription;
 
   private readonly login = this._route.snapshot.params['login'];
 
@@ -27,6 +31,10 @@ export class RepositoriesPageComponent implements OnInit, OnDestroy {
   public ngOnInit(): void {
     this._repositoriesSubscription =  this.repositories$.subscribe((repositories) => {
       this.repositories = repositories;
+    });
+
+    this._repositoriesTotalSubscription =  this._storeService.repositoriesTotal$.subscribe((total) => {
+      this.total = total;
     })
 
     this.repositories$.subscribe((repositories) => {
@@ -39,16 +47,19 @@ export class RepositoriesPageComponent implements OnInit, OnDestroy {
 
   }
 
-  public onPaginationChange({ page, per_page }): void {
+  public onPaginationChange({ page, per_page }): void {    
     const dataExist = this.repositories.length / per_page > page;
 
-    if(!dataExist) {
+    if(!dataExist && per_page < this.total) {
+      console.log('!dataExist');
+      
       this._storeService.fetchUserRepositoriesList(this.login, page, per_page);
     }
   }
 
   public ngOnDestroy(): void {
     this._repositoriesSubscription.unsubscribe();
+    this._repositoriesTotalSubscription.unsubscribe();
 
     this._storeService.clearRepositoriesList();
   }

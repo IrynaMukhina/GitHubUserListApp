@@ -1,7 +1,7 @@
 $fontColorLight: #828282;
 $fontColorDark: #000000;
 $fontColorMedium: white;
-$primaryColor: #3f51b5;;
+$primaryColor: #3f51b5;
 $navigationLineBgColor: #F6F6F6;
 $activeNavigationFontColor: #ffffff;
 $navigationActiveBackground: $primaryColor;
@@ -93,6 +93,7 @@ $navigationHoverBackground: rgba($navigationActiveBackground, 0.6);
     
       &__description {
         color: $activeNavigationFontColor;
+        font-weight: 800;
       }
     }
 

@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { FormControl, UntypedFormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { AppStoreService } from 'src/app/services/app-store.service';
 
@@ -27,6 +28,7 @@ export class FavoriteListItem {
   constructor(
     private readonly _storeService: AppStoreService,
     private readonly _fb: UntypedFormBuilder,
+    private readonly _router: Router,
   ){}
 
   public ngOnInit() {
@@ -41,8 +43,12 @@ export class FavoriteListItem {
     this._storeService.updateFavoriteComment(this.userItem.id, this._getCommentFormValue())
   }
 
-  public getUserAcountLink(link: string): string {
-    return link.replace('/users', '').replace('api.', '')
+  public getUserAcountLink(url: string): string {
+    return url.replace('/users', '').replace('api.', '')
+  }
+
+  public onLinkClick(): void {
+    this._router.navigate(['repositories', this.userItem.login]);
   }
 
   private _getCommentFormValue(): string {

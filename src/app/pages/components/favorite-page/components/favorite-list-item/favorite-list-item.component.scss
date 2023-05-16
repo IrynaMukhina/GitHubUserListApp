@@ -11,7 +11,8 @@
 
 
     &__icon {
-      width: 5%;
+      width: 2%;
+      color: #3f51b5;
     }
 
     &__section {
@@ -20,7 +21,18 @@
       gap: 20px;
 
       &__login {
-        width: 15%;
+        width: 17%;
+
+        a {
+          color: #2473b2;
+          font-style: normal;
+          font-weight: 400;
+          text-decoration: underline;
+
+          &:hover {
+            cursor: pointer;
+          }
+        }
       }
 
       &__url {

@@ -1,9 +1,6 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 import { APP_FEATURE_KEY } from './app.constants';
 import { IAppState } from './app.interfaces';
-// export interface AppStoreState {
-//   APP_FEATURE_KEY: IAppState
-// }
 
 const getAppState = createFeatureSelector<IAppState>(APP_FEATURE_KEY);
 
@@ -22,7 +19,6 @@ export const usersGridDataPending = createSelector(
   ({ usersGridDataLoading }: IAppState): boolean => usersGridDataLoading
 );
 
-
 export const getFavoriteUserList = createSelector(
   getAppState,
   ({ usersGridData }: IAppState): Array<any> => usersGridData.filter(user => user.isFavorite)
@@ -36,4 +32,9 @@ export const getRepositoriesUserList = createSelector(
 export const getRepositoriesTotal = createSelector(
   getAppState,
   ({ repositoriesTotal }: IAppState): number => repositoriesTotal
+);
+
+export const repositoriesUserListPending = createSelector(
+  getAppState,
+  ({ currentUserRepositoriesUserListLoading }: IAppState): boolean => currentUserRepositoriesUserListLoading
 );

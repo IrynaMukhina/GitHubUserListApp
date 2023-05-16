@@ -7,7 +7,7 @@ import { Observable, BehaviorSubject } from 'rxjs';
   providedIn: 'root'
 })
 export class NavigationService {
-  private isOpen = true;
+  private isOpen = false;
   private navStatus = new BehaviorSubject(this.isOpen);
 
 
