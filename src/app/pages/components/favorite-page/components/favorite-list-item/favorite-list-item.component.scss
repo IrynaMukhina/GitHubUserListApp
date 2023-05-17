@@ -13,6 +13,10 @@
     &__icon {
       width: 2%;
       color: #3f51b5;
+
+      &:hover {
+        cursor: pointer;
+      }
     }
 
     &__section {
