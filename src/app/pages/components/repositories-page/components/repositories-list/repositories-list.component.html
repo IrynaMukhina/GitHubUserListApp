@@ -1,4 +1,4 @@
-<div class="app-repositories-list" *ngIf="!(repositoriesUserListLoading$ | async) && currentPageItems.length">
+<div class="app-repositories-list" *ngIf="!repositoriesUserListLoading && currentPageItems.length">
   <app-repositories-list-item  *ngFor="let item of currentPageItems"
     [item]="item">
   </app-repositories-list-item>
@@ -17,7 +17,7 @@
   </mat-paginator>
 </div>
 
-<div *ngIf="!(repositoriesUserListLoading$ | async) && !currentPageItems.length"
+<div *ngIf="!repositoriesUserListLoading && !currentPageItems.length"
   class="app-repositories-list__info">
   <mat-icon class="app-repositories-list__info__icon">
     info_outline
@@ -25,7 +25,7 @@
   No repositories to show.
 </div>
 
-<div *ngIf="repositoriesUserListLoading$ | async"
+<div *ngIf="repositoriesUserListLoading"
   class="app-repositories-list__loader-wrapper">
   <mat-spinner></mat-spinner>
 </div>
