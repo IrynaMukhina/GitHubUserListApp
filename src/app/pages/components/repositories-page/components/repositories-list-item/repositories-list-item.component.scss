@@ -1,0 +1,50 @@
+:host {
+  width: 32%;
+
+  .app-repositories-list-item {
+      min-height: 300px;
+
+      &__content {
+        &__block {
+          display: flex;
+          justify-content: flex-start;
+          gap: 20px;
+          width: 100%;
+          padding-top: 20px;
+
+          &__title {
+            width: 25%;
+            font-weight: 600;
+          }
+
+          &__description {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            width: 65%;
+            max-height: 60px;
+            overflow: scroll;
+
+            &__icon {
+              color: #3f51b5;
+            }
+          }
+        }
+      }
+    
+    .example-header-image {
+      // background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+      background-size: cover;
+    }
+  }  
+
+  ::ng-deep {
+    .mat-mdc-card {
+      box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+
+      &:hover {
+        box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+      }
+    }
+  }
+}

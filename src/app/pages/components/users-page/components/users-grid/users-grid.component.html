@@ -1,0 +1,22 @@
+<div class="app-users-grid">
+  <ag-grid-angular #grid
+    style="height: 550px;"
+    class="ag-theme-alpine"
+    [rowData]="currentPageUsers"
+    [columnDefs]="columnDefs"
+    [gridOptions]="gridOptions">
+  </ag-grid-angular>
+
+  <mat-paginator #paginator
+    class="demo-paginator"
+    (page)="handlePageEvent($event)"
+    [length]="length"
+    [pageSize]="pageSize"
+    [disabled]="disabled"
+    [showFirstLastButtons]="showFirstLastButtons"
+    [pageSizeOptions]="showPageSizeOptions ? pageSizeOptions : []"
+    [hidePageSize]="hidePageSize"
+    [pageIndex]="pageIndex"
+    aria-label="Select page">
+  </mat-paginator>
+</div>
