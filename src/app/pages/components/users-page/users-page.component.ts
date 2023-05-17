@@ -32,11 +32,7 @@ export class UsersPageComponent implements OnInit, OnDestroy {
   }
 
   public onPaginationChange({ page, per_page }): void {
-    const dataExist = this.users.length / per_page > page;
-
-    if(!dataExist) {
-      this._storeService.fetchUsersGridData(page, per_page);
-    }
+    this._storeService.fetchUsersGridData(page, per_page);
   }
 
   public ngOnDestroy(): void {

@@ -48,15 +48,19 @@ export class RepositoriesList implements OnChanges, OnDestroy {
     );
   }
 
-  public handlePageEvent(e: PageEvent): void {    
-    if (this.pageSize != e.pageSize) {
-      this.currentPageItems = this._getCurrentPageData();
-    }
-    
+  public handlePageEvent(e: PageEvent): void {  
     this.pageEvent = e;
     this.length = e.length;
     this.pageSize = e.pageSize;
     this.pageIndex = e.pageIndex;
+
+    const dataExist = this.items.length / this.pageSize >= this.pageIndex + 1;
+    
+    if (dataExist && this.pageSize < this.length) {
+      this.currentPageItems = this._getCurrentPageData();
+
+      return;
+    }
 
     this.onPaginationChange.emit({ page: this.pageIndex + 1, per_page: this.pageSize })
   }

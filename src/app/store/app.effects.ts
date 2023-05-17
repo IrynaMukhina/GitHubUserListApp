@@ -101,11 +101,11 @@ export class AppEffects {
   fetchUserRepositoriesListTotal$ = createEffect(() =>
     this._actions$.pipe(
       ofType(AppActions.FetchUserRepositoriesListTotal),
-      switchMap(({ login }) =>
-        this._usersService.getUser(login)
+      switchMap(({ login }) => {
+        return this._usersService.getUser(login)
+      }
       ),
       map(({ public_repos }) => {
-        
         return getUserRepositoriesListSuccess({ total: public_repos });
       }),
       catchError(() => {
