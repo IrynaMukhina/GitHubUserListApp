@@ -51,7 +51,7 @@ export class AppStoreService {
     this._store.dispatch(fetchUserRepositoriesList({ login, page, per_page }));
   }
 
-  public FetchUserRepositoriesListTotal(login: string): void {
+  public fetchUserRepositoriesListTotal(login: string): void {
     this._store.dispatch(fetchUserRepositoriesListTotal({ login }));
   }
 
