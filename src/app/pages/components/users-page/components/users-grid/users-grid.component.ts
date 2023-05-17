@@ -73,12 +73,14 @@ export class UsersGridComponent implements OnInit, OnChanges {
   }
 
   public handlePageEvent(e: PageEvent): void {
+    if (this.pageSize != e.pageSize) {
+      this.currentPageUsers = this._getCurrentPageData();
+    }
+
     this.pageEvent = e;
     this.length = e.length;
     this.pageSize = e.pageSize;
     this.pageIndex = e.pageIndex;
-
-    this.currentPageUsers = this._getCurrentPageData();
 
     this.onPaginationChange.emit({ page: this.pageIndex + 1, per_page: this.pageSize })
   }

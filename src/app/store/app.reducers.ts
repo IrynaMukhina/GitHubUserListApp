@@ -16,7 +16,7 @@ import {
 const initialState: IAppState = {
   usersGridData: [],
   total: 0,
-  usersGridDataLoading: true,
+  usersGridDataLoading: false,
   currentUserRepositoriesUserList: [],
   currentUserRepositoriesUserListLoading: false,
   repositoriesTotal: 0
