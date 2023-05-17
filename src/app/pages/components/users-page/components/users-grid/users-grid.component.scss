@@ -3,6 +3,13 @@
     ag-grid-angular {
       height: 650px;
     }
+
+    &__loader-wrapper {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 650px;
+    }
   }
   
   ::ng-deep {

@@ -24,6 +24,7 @@ export class AppEffects {
   fetchUsersGridData$ = createEffect(() =>
     this._actions$.pipe(
       ofType(AppActions.FetchUserGridData),
+      tap(() => this._storeService.updateLoadingUsersGridData(true)),
       switchMap(({ page, per_page }) =>
         this._usersService.getUsers(page, per_page)
       ),
@@ -52,6 +53,7 @@ export class AppEffects {
   fetchUsersGridDataWithTotal$ = createEffect(() =>
     this._actions$.pipe(
       ofType(AppActions.FetchUserGridDataWithTotal),
+      tap(() => this._storeService.updateLoadingUsersGridData(true)),
       switchMap(({ page, per_page }) =>
         this._usersService.getUsers(page, per_page)
       ),
