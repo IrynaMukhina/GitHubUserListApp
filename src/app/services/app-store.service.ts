@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { updateUserFavoriteState, fetchUserGridData, getUserGridDataSuccess, updateFavoriteComment, fetchUserGridDataWithTotal, fetchUserRepositoriesList, fetchUserRepositoriesListTotal, getUserRepositoriesListFailure, getUserRepositoriesListSuccess, clearRepositoriesList, loadingUserRepositoriesList } from '../store/app.actions';
+import { updateUserFavoriteState, fetchUserGridData, getUserGridDataSuccess, updateFavoriteComment, fetchUserGridDataWithTotal, fetchUserRepositoriesList, fetchUserRepositoriesListTotal, getUserRepositoriesListFailure, getUserRepositoriesListSuccess, clearRepositoriesList, loadingUserRepositoriesList, loadingUserGridData } from '../store/app.actions';
 import {  getFavoriteUserList, getRepositoriesTotal, getRepositoriesUserList, getUsersGridData, getUsersGridDataTotal, usersGridDataPending } from '../store/app.selectors';
 import { IUserGridItem } from '../pages/components/users-page/models/users-page.iterfaces';
 
@@ -33,6 +33,10 @@ export class AppStoreService {
 
   public setUsersGridData(data: Array<IUserGridItem>, total: number): void {
     this._store.dispatch(getUserGridDataSuccess({ data, total }));
+  }
+
+  public updateLoadingUsersGridData(isLoading: boolean): void {
+    this._store.dispatch(loadingUserGridData({ isLoading }));
   }
 
   public updateUserFavoriteState(id: string): void {
