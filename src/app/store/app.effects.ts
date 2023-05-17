@@ -88,7 +88,19 @@ export class AppEffects {
         this._repositoriesService.getRepositories(login, page, per_page)
       ),
       map((res) => {
-        return getUserRepositoriesListSuccess({ data: res });
+        const adaptedRes = res.map(item => ({
+            name: item.name,
+            createdAt: item.created_at,
+            updatedAt: item.updated_at,
+            description: item.description,
+            owner: {
+              avatarUrl: item.owner.avatar_url
+            },
+            starsCount: item.stargazers_count
+          }
+        ));
+
+        return getUserRepositoriesListSuccess({ data: adaptedRes });
       }),
       catchError(() => {
         this._store.dispatch(getUserRepositoriesListFailure());

@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { updateUserFavoriteState, fetchUserGridData, getUserGridDataSuccess, updateFavoriteComment, fetchUserGridDataWithTotal, fetchUserRepositoriesList, fetchUserRepositoriesListTotal, getUserRepositoriesListFailure, getUserRepositoriesListSuccess, clearRepositoriesList, loadingUserRepositoriesList, loadingUserGridData } from '../store/app.actions';
 import {  getFavoriteUserList, getRepositoriesTotal, getRepositoriesUserList, getUsersGridData, getUsersGridDataTotal, usersGridDataPending } from '../store/app.selectors';
 import { IUserGridItem } from '../pages/components/users-page/models/users-page.iterfaces';
+import { IRepositoryItem } from '../pages/components/repositories-page/models/repositories-page.iterfaces';
 
 @Injectable({ providedIn: 'root' })
 export class AppStoreService {
@@ -55,7 +56,7 @@ export class AppStoreService {
     this._store.dispatch(fetchUserRepositoriesListTotal({ login }));
   }
 
-  public setUserRepositoriesListSuccess(data?: Array<any>, total?: number): void {
+  public setUserRepositoriesListSuccess(data?: Array<IRepositoryItem>, total?: number): void {
     this._store.dispatch(getUserRepositoriesListSuccess({ data, total }));
   }
 

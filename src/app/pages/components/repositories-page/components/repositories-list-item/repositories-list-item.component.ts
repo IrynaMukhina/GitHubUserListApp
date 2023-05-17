@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
-import { FormControl, UntypedFormBuilder, Validators } from '@angular/forms';
-import { Subscription } from 'rxjs';
+import {  UntypedFormBuilder } from '@angular/forms';
 import { AppStoreService } from 'src/app/services/app-store.service';
+import { IRepositoryItem } from '../../models/repositories-page.iterfaces';
 
 @Component({
   selector: 'app-repositories-list-item',
@@ -9,16 +9,7 @@ import { AppStoreService } from 'src/app/services/app-store.service';
   templateUrl: './repositories-list-item.component.html',
 })
 export class RepositoriesListItem {
-  @Input() item;
-
-  public userItem: any;
-
-  // public commentControlSubscription: Subscription;
-
-  // public commentControl = new FormControl(
-  //   '',
-  //   [Validators.minLength(10), Validators.maxLength(100)]
-  // );
+  @Input() item: IRepositoryItem;
 
   constructor(
     private readonly _storeService: AppStoreService,
@@ -28,20 +19,4 @@ export class RepositoriesListItem {
   public ngOnInit() {
 
   }
-
-  // public updateUserRepositoriesState(item: any) {
-  //   this._storeService.updateUserRepositoriesState(item.id)
-  // }
-
-  // public onAddComment(): void {
-  //   this._storeService.updateRepositoriesComment(this.userItem.id, this._getCommentFormValue())
-  // }
-
-  // public getUserAcountLink(link: string): string {
-  //   return link.replace('/users', '').replace('api.', '')
-  // }
-
-  // private _getCommentFormValue(): string {
-  //   return this.commentControl.value;
-  // }
 }
