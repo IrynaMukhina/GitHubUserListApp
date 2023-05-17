@@ -50,9 +50,7 @@ export class RepositoriesPageComponent implements OnInit, OnDestroy {
   public onPaginationChange({ page, per_page }): void {    
     const dataExist = this.repositories.length / per_page > page;
 
-    if(!dataExist && per_page < this.total) {
-      console.log('!dataExist');
-      
+    if(!dataExist && per_page < this.total) {      
       this._storeService.fetchUserRepositoriesList(this.login, page, per_page);
     }
   }

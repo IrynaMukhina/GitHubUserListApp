@@ -11,11 +11,8 @@ export class RepositoriesService {
     constructor(private httpClient: HttpClient) { }
 
     getRepositories(login: string, page: number, per_page: number): Observable<any> {
-
-      console.log(login, 'login');
       
       
       return this.httpClient.get(`https://api.github.com/users/${login}/repos?q=page=${page}&per_page=${per_page}`);
-      ///repos{?type,page,per_page,sort}x
     }
 }
