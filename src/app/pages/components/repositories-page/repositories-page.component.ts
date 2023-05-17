@@ -19,7 +19,7 @@ export class RepositoriesPageComponent implements OnInit, OnDestroy {
   private _repositoriesSubscription: Subscription;
   private _repositoriesTotalSubscription: Subscription;
 
-  private readonly login = this._route.snapshot.params['login'];
+  private _login: string;
 
   constructor(
     private readonly _storeService: AppStoreService,
@@ -28,7 +28,9 @@ export class RepositoriesPageComponent implements OnInit, OnDestroy {
     private readonly _route: ActivatedRoute,
   ){}
 
-  public ngOnInit(): void {
+  public ngOnInit(): void {    
+    this._login = this._route.snapshot.params['login'];
+
     this._repositoriesSubscription =  this.repositories$.subscribe((repositories) => {
       this.repositories = repositories;
     });
@@ -37,25 +39,16 @@ export class RepositoriesPageComponent implements OnInit, OnDestroy {
       this.total = total;
     })
 
-    this.repositories$.subscribe((repositories) => {
-      this.repositories = repositories;
-    });
+    this._storeService.fetchUserRepositoriesListTotal(this._login);
 
-    this._storeService.FetchUserRepositoriesListTotal(this.login);
-
-    this._storeService.fetchUserRepositoriesList(this.login, 1, 6);
-
+    this._storeService.fetchUserRepositoriesList(this._login, 1, 6);
   }
 
   public onPaginationChange({ page, per_page }): void {    
-    const dataExist = this.repositories.length / per_page > page;
-
-    if(!dataExist && per_page < this.total) {      
-      this._storeService.fetchUserRepositoriesList(this.login, page, per_page);
-    }
+    this._storeService.fetchUserRepositoriesList(this._login, page, per_page);
   }
 
-  public ngOnDestroy(): void {
+  public ngOnDestroy(): void {    
     this._repositoriesSubscription.unsubscribe();
     this._repositoriesTotalSubscription.unsubscribe();
 
