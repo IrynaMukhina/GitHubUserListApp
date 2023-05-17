@@ -43,7 +43,7 @@ export class RepositoriesPageComponent implements OnInit, OnDestroy {
 
     this._storeService.FetchUserRepositoriesListTotal(this.login);
 
-    this._storeService.fetchUserRepositoriesList(this.login, 1, 10);
+    this._storeService.fetchUserRepositoriesList(this.login, 1, 6);
 
   }
 
