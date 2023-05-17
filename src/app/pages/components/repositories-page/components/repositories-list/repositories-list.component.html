@@ -1,17 +1,31 @@
-<div class="app-repositories-list">
+<div class="app-repositories-list" *ngIf="!(repositoriesUserListLoading$ | async) && currentPageItems.length">
   <app-repositories-list-item  *ngFor="let item of currentPageItems"
     [item]="item">
   </app-repositories-list-item>
+
+  <mat-paginator #paginator
+    class="demo-paginator"
+    (page)="handlePageEvent($event)"
+    [length]="length"
+    [pageSize]="pageSize"
+    [disabled]="disabled"
+    [showFirstLastButtons]="showFirstLastButtons"
+    [pageSizeOptions]="showPageSizeOptions ? pageSizeOptions : []"
+    [hidePageSize]="hidePageSize"
+    [pageIndex]="pageIndex"
+    aria-label="Select page">
+  </mat-paginator>
 </div>
-<mat-paginator #paginator
-  class="demo-paginator"
-  (page)="handlePageEvent($event)"
-  [length]="length"
-  [pageSize]="pageSize"
-  [disabled]="disabled"
-  [showFirstLastButtons]="showFirstLastButtons"
-  [pageSizeOptions]="showPageSizeOptions ? pageSizeOptions : []"
-  [hidePageSize]="hidePageSize"
-  [pageIndex]="pageIndex"
-  aria-label="Select page">
-</mat-paginator>
+
+<div *ngIf="!(repositoriesUserListLoading$ | async) && !currentPageItems.length"
+  class="app-repositories-list__info">
+  <mat-icon class="app-repositories-list__info__icon">
+    info_outline
+  </mat-icon>
+  No repositories to show.
+</div>
+
+<div *ngIf="repositoriesUserListLoading$ | async"
+  class="app-repositories-list__loader-wrapper">
+  <mat-spinner></mat-spinner>
+</div>
