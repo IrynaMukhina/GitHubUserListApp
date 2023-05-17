@@ -1,0 +1,11 @@
+.app-favorite-page {
+  &__info {
+    display: flex;
+    align-items: center;
+
+    &__icon {
+      color: #3f51b5;
+      padding-right: 8px;
+    }
+  }
+}

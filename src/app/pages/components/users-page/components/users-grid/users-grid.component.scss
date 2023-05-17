@@ -1,0 +1,29 @@
+:host {
+  .app-users-grid {
+    ag-grid-angular {
+      height: 650px;
+    }
+  }
+  
+  ::ng-deep {
+    .app-users-grid__icon {
+      display: flex;
+      justify-content: center;
+
+      .mat-icon {
+        color: #3f51b5;
+      }
+    }
+
+    .cell-link {
+      font-style: normal;
+      font-weight: 400;
+      text-decoration: underline;
+      color:  #2473b2;
+    }
+    
+    .cursor-pointer {
+      cursor: pointer;
+    }  
+  }
+}

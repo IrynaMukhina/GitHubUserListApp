@@ -1,0 +1,27 @@
+<mat-card class="app-repositories-list-item">
+  <mat-card-header>
+    <div mat-card-avatar class="example-header-image" [ngStyle]="{'background-image': 'url(' + item.owner.avatar_url + ')'}"></div>
+    <mat-card-title>{{ item.name }}</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <mat-card-subtitle>Created: {{ item.created_at | date }}</mat-card-subtitle>
+    <mat-card-subtitle>Last Updated: {{ item.updated_at | date }}</mat-card-subtitle>
+    <div>
+      <div class="app-repositories-list-item__content__block">
+        <div class="app-repositories-list-item__content__block__title">Description: </div>
+        <p class="app-repositories-list-item__content__block__description">
+          {{ item.description }}
+        </p>
+      </div>
+      <div class="app-repositories-list-item__content__block">
+        <div class="app-repositories-list-item__content__block__title">Count of stars: </div>
+        <div class="app-repositories-list-item__content__block__description">
+          {{ item.stargazers_count }}
+          <mat-icon class="app-repositories-list-item__content__block__description__icon">
+            star
+          </mat-icon>
+        </div>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>
