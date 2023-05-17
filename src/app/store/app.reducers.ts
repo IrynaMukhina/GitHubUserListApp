@@ -78,9 +78,7 @@ const reducer = createReducer(
       usersGridData: [...updatedUsersGridData]
     }
   }),
-  on(getUserRepositoriesListSuccess, (state, { data, total }) => {
-    console.log('getUserRepositoriesListSuccess', data);
-    
+  on(getUserRepositoriesListSuccess, (state, { data, total }) => {    
     return {
       ...state,
       currentUserRepositoriesUserList: data ? [...state.currentUserRepositoriesUserList, ...data] : [...state.currentUserRepositoriesUserList],
@@ -88,9 +86,7 @@ const reducer = createReducer(
       currentUserRepositoriesUserListLoading: false
     }
   }),
-  on(clearRepositoriesList, (state) => {
-    console.log('clearRepositoriesList');
-    
+  on(clearRepositoriesList, (state) => {    
     return {
       ...state,
       currentUserRepositoriesUserList: [],

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { updateUserFavoriteState, fetchUserGridData, getUserGridDataSuccess, updateFavoriteComment, fetchUserGridDataWithTotal, fetchUserRepositoriesList, fetchUserRepositoriesListTotal, getUserRepositoriesListFailure, getUserRepositoriesListSuccess, clearRepositoriesList } from '../store/app.actions';
+import { updateUserFavoriteState, fetchUserGridData, getUserGridDataSuccess, updateFavoriteComment, fetchUserGridDataWithTotal, fetchUserRepositoriesList, fetchUserRepositoriesListTotal, getUserRepositoriesListFailure, getUserRepositoriesListSuccess, clearRepositoriesList, loadingUserRepositoriesList } from '../store/app.actions';
 import {  getFavoriteUserList, getRepositoriesTotal, getRepositoriesUserList, getUsersGridData, getUsersGridDataTotal, usersGridDataPending } from '../store/app.selectors';
 import { IUserGridItem } from '../pages/components/users-page/models/users-page.iterfaces';
 
@@ -61,6 +61,10 @@ export class AppStoreService {
 
   public clearRepositoriesList(): void {
     this._store.dispatch(clearRepositoriesList());
+  }
+
+  public updateLoadingUserRepositoriesList(isLoading: boolean): void {
+    this._store.dispatch(loadingUserRepositoriesList({ isLoading }));
   }
   
 }

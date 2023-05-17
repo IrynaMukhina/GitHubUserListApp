@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
+import { AppStoreService } from 'src/app/services/app-store.service';
 
 interface IRepositoriesListRequestParams {
   page: number,
@@ -18,6 +19,7 @@ export class RepositoriesList implements OnChanges {
   @Output() public onPaginationChange: EventEmitter<IRepositoriesListRequestParams> = new EventEmitter();
 
   public currentPageItems: any;
+  public repositoriesUserListLoading$ = this._storeService.repositoriesUserListLoading$;
   
   public pageSize = 6;
   public pageIndex = 0;
@@ -30,6 +32,9 @@ export class RepositoriesList implements OnChanges {
 
   public pageEvent: PageEvent;
 
+  constructor(
+    private readonly _storeService: AppStoreService,
+  ) {}
 
   public ngOnChanges({ items }: SimpleChanges ): void {
     if (items.currentValue) {
@@ -37,9 +42,7 @@ export class RepositoriesList implements OnChanges {
     }
   }
 
-  public handlePageEvent(e: PageEvent): void {
-    console.log('handlePageEvent', e, this.length);
-    
+  public handlePageEvent(e: PageEvent): void {    
     this.pageEvent = e;
     this.length = e.length;
     this.pageSize = e.pageSize;
