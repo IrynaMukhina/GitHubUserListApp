@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, OnChanges, OnDestroy, Output, SimpleCha
 import { PageEvent } from '@angular/material/paginator';
 import { Subscription } from 'rxjs';
 import { AppStoreService } from 'src/app/services/app-store.service';
+import { IRepositoryItem } from '../../models/repositories-page.iterfaces';
 
 interface IRepositoriesListRequestParams {
   page: number,
@@ -14,12 +15,12 @@ interface IRepositoriesListRequestParams {
   templateUrl: './repositories-list.component.html',
 })
 export class RepositoriesList implements OnChanges, OnDestroy {
-  @Input() items: Array<any>;
+  @Input() items: Array<IRepositoryItem>;
   @Input() length: number;
 
   @Output() public onPaginationChange: EventEmitter<IRepositoriesListRequestParams> = new EventEmitter();
 
-  public currentPageItems: any;
+  public currentPageItems: Array<IRepositoryItem>;
   public repositoriesUserListLoading: boolean;
   public repositoriesUserListLoadingSubscription: Subscription;
   
@@ -40,7 +41,7 @@ export class RepositoriesList implements OnChanges, OnDestroy {
 
   public ngOnChanges({ items }: SimpleChanges ): void {
     if (items.currentValue) {
-      this.currentPageItems = this._getCurrentPageData();
+      this.currentPageItems = [...this._getCurrentPageData()];
     }
 
     this.repositoriesUserListLoadingSubscription =  this._storeService.repositoriesUserListLoading$.subscribe(
@@ -56,8 +57,8 @@ export class RepositoriesList implements OnChanges, OnDestroy {
 
     const dataExist = this.items.length / this.pageSize >= this.pageIndex + 1;
     
-    if (dataExist && this.pageSize < this.length) {
-      this.currentPageItems = this._getCurrentPageData();
+    if (dataExist && this.pageSize < this.length) {      
+      this.currentPageItems = [...this._getCurrentPageData()];
 
       return;
     }

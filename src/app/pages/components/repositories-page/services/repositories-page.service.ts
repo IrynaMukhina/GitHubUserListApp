@@ -13,6 +13,6 @@ export class RepositoriesService {
     getRepositories(login: string, page: number, per_page: number): Observable<any> {
       
       
-      return this.httpClient.get(`https://api.github.com/users/${login}/repos?q=page=${page}&per_page=${per_page}`);
+      return this.httpClient.get(`https://api.github.com/users/${login}/repos?page=${page}&per_page=${per_page}`);
     }
 }

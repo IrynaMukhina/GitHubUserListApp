@@ -1,5 +1,6 @@
 import { createAction, props } from '@ngrx/store';
 import { IUserGridItem } from '../pages/components/users-page/models/users-page.iterfaces';
+import { IRepositoryItem } from '../pages/components/repositories-page/models/repositories-page.iterfaces';
 // import { AlternatesItem } from '../../shared/models/alternates-item.model';
 
 export enum AppActions {
@@ -65,7 +66,7 @@ export const fetchUserRepositoriesListTotal = createAction(
 
 export const getUserRepositoriesListSuccess = createAction(
   AppActions.GetUserRepositoriesListSuccess,
-  props<{ data?: Array<any>, total?: number }>()
+  props<{ data?: Array<IRepositoryItem>, total?: number }>()
 );
 
 export const getUserRepositoriesListFailure = createAction(
